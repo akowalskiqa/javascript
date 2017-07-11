@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challange 7 </title>
+
+</head>
+<body>
+
+    <div id="appendHere"></div>
+
+<button onclick="writeToDocument()">writeToDocument</button>
+<button onclick="updateTheNewPElement()">updateTheNewPElement</button>
+<button onclick="deleteNewElement()">deleteNewElement</button>
+
+</body>
+<script>
+function writeToDocument(){
+    var para = document.createElement("p");
+    var node = document.createTextNode("This is new.");
+    para.appendChild(node);
+
+    para.setAttribute("id","newPElement");
+    element = document.getElementById("appendHere");
+    element.appendChild(para);
+    console.log(para.id)
+}
+//criteria does not sepcify the editing, so this should do whats requried..
+function updateTheNewPElement(){
+    document.getElementById("newPElement").innerHTML = "the p element has been changed?"
+}
+
+function deleteNewElement(){
+    var element = document.getElementById("newPElement");
+    element.parentNode.removeChild(element);
+}
+
+</script>
+</html>

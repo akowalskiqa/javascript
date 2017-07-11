@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challange 3 </title>
+<script>
+
+var aVariable = 'He said "My name is elliott"';
+console.log(aVariable);
+console.log("Turned to UpperCase: "+ aVariable.toUpperCase());
+
+
+var numberVariable = 5;
+var stringVariable = "String Variable";
+var willPrintConCatNumberAndString = numberVariable+stringVariable;
+console.log(willPrintConCatNumberAndString);
+
+var array = ["string1","string2","string3"]
+function outPutArrayContent(){
+for(var i =0;i<array.length;i++){
+    console.log(array[i])
+}
+}
+outPutArrayContent();
+console.log("-----------------------------------");
+array[array.length] = "string4";
+outPutArrayContent();
+array.splice(array.length-1,array.length-1);
+console.log("-----------------------------------");
+outPutArrayContent();
+
+</script>
+</head>
+<body>
+</body>
+</html>
+
+
+
+<!--Strings
+	Create a variable with  "He said "My name is elliott" " as the value. and then display it.
+Using string methods, convert this string to uppercase and display it.
+	Perform an addition on a number variable and a string variable ("1" + 2 etc.)
+	Create an array with 3 strings and output them all.
+Add another string with JS and output them.
+Remove the last string from the array with JS and then output them.-->

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challange 8And9 </title>
+<script>
+
+//var requestURL = 'https://raw.githubusercontent.com/womackx/JSONDataRepo/master/example.json'; 
+
+function getJson(path,callback){
+var request = new XMLHttpRequest();
+ request.open('GET', path);
+  request.responseType = 'json';
+   request.send();
+   request.onload = function() { 
+	var superHeroes = request.response; 
+    callback(superHeroes); 
+   }
+}
+ getJson("https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", function(superHeroes) {
+     //console.log(superHeroes);
+     console.log(superHeroes.members);
+ });
+console.log("-------------------------------")
+
+
+ getJson("https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", function(superHeroes) {
+    
+    superHeroes["members"].forEach(function(element){console.log(element.name);})
+   // superHeroes.members.forEach(function(element){console.log(element);});
+ });
+
+
+
+
+
+
+//https://github.com/ewomackQA/JSONDataRepo/blob/master/kings.json
+</script>
+</head>
+<body>
+</body>
+</html>
+
+
