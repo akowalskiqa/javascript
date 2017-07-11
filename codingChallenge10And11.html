@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challange 10 </title>
+<script>
+function Garage (limit) {
+    this.content = [];
+    this.limit = limit;
+
+    this.add = function (car) {
+        this.content.push(car);
+    };
+}
+function Car(inputId,make,registration,amount){
+    this.id = inputId;
+    this.carMake = make;
+    this.reg = registration;
+    this.brokenAmount = amount;
+}
+function checkinCar(car){
+    garage.add(car);
+}
+function garageContentOutput(garageInput){
+    console.log(`the garage content is: ${garageInput.content},\nthe garage limit is: ${garageInput.limit}`);
+}
+function checkCarOut(carInput,garageInput){
+    garage.content.splice(garageInput.content.indexOf(carInput),garageInput.content.indexOf(carInput))
+
+}
+
+function calculateBill(carInput){
+    console.log(carInput.brokenAmount *5);
+}
+
+function findCarInThisGarage(id,garageInput){
+
+    for(var i = 0; i<garageInput.content.length; i++){
+        if(garageInput.content[i].id == id){
+            return garageInput.content[i];
+        }
+    }}
+
+var car1 = new Car(1,"Audi","hdash12",5);
+var car2 = new Car(2,"Skoda","dasda",10);
+var car3 = new Car(3,"ads","cccc",7);
+var garage = new Garage(15);
+
+
+checkinCar(car1);
+checkinCar(car2);
+checkinCar(car3);
+calculateBill(car3);
+garageContentOutput(garage);
+
+
+//findCarInThisGarage(1,garage);
+console.log(findCarInThisGarage(3,garage));
+
+
+function run(){
+    switch(document.getElementById("command").value){
+        case "findCarById":
+            console.log(findCarInThisGarage(document.getElementById("valueWithCommand").value,garage));
+            break;
+        case "outPutContent":
+            garageContentOutput(garage);
+            break;
+        case "bill":
+            calculateBill(findCarInThisGarage(document.getElementById("valueWithCommand").value,garage),garage);
+            break;
+        case "checkIn":
+            var input = document.getElementById("valueWithCommand").value.split(" ").filter(Boolean);
+            var car = new Car(input[0],input[1],input[2],input[3]);
+            //new Car(1,"Audi","hdash12",5);
+            checkinCar(car);
+            console.log(car);
+            break;
+        case "checkOut":
+                checkCarOut(findCarInThisGarage(document.getElementById("valueWithCommand".value),garage),garage);
+                console.log("you have checked Out");
+                break;
+        default:
+            alert("You must of entered invalid command, make sure the command is valid, and also assure the value for the command is following the requirements"); 
+        //dooo this and so on
+    }
+}
+</script>
+</head>
+<body>
+<form>
+    <input type="text" id="command" placeholder="enter command">
+    <input type="text" id="valueWithCommand" placeholder="value with command if needed">
+    <input type="button" value="execute command" onclick="run()">
+</form>
+</body>
+</html>
