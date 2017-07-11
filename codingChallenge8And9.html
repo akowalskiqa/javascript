@@ -22,22 +22,22 @@ var request = new XMLHttpRequest();
  });
 console.log("-------------------------------")
 
-
- getJson("https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", function(superHeroes) {
-    
-    superHeroes["members"].forEach(function(element){console.log(element.name);})
+function getJsonByAttribute(attribute){
+ getJson("https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", function(superHeroes) {    
+    superHeroes[document.getElementById("attributeInput").value].forEach(function(element){console.log(element);})
    // superHeroes.members.forEach(function(element){console.log(element);});
  });
-
-
-
-
-
-
+}
 //https://github.com/ewomackQA/JSONDataRepo/blob/master/kings.json
 </script>
 </head>
 <body>
+    <form>
+        <input type="text" id="attributeInput" placeholder="tested with 'members'">
+        <input type="button" onclick="getJsonByAttribute('#attributeInput')" value="enter known attribute">
+    </form>
+
+
 </body>
 </html>
 
