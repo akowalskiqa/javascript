@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challange 2 </title>
+<script>
+var anObject = {
+    name:"John",
+    age:57,
+    occupation:"vet"
+}
+function squareThisNumber(number){
+    console.log(number*number);
+}
+function outPutObjectContent(){
+    console.log(anObject.name,anObject.age,anObject.occupation);
+    anObject.name="your new name";
+    anObject.age = 1;
+    anObject.occupation = "unemployed";
+    console.log(anObject.name,anObject.age,anObject.occupation);
+}
+function increasePersonAge(){
+    alert("His Age was" + anObject.age);
+    anObject.age+=1;
+    alert("His Age now"+ anObject.age);
+}
+</script>
+</head>
+<body>
+<button onclick="outPutObjectContent()">outPutObjectContent</button>
+<button onclick="increasePersonAge()">Increase Person's Age</button>
+
+<form>
+    <input type="number" name="squareThis" placeholder="Enter a number" alt="Enter a number">
+    <input type ="button" onclick="squareThisNumber(squareThis.value)" value="Sqaure This inputed Number">
+</form>
+</body>
+</html>
