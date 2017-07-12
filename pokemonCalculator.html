@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pokemon Calculator</title>
+    <script>
+        var response;
+
+        function callApi(type) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", `http://pokeapi.co/api/v2/type/${type}/`, false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send();
+            response = JSON.parse(xhttp.responseText);
+        }
+        function result() {
+            var damage = 0;
+            var attackMove = document.getElementById("attackType").value;
+            var defense = document.getElementById("pokemonRecevingDamage").value.split(" ").filter(Boolean);
+            callApi(attackMove);
+            console.log(attackMove);
+            console.log(defense);
+            callApi(attackMove);
+            console.log(response);
+loop1:
+            for(var i =0;i<defense.length;i++){
+                console.log("#");
+                for(let j = 0; j<response.damage_relations.double_damage_to.length;j++){
+                    if(response.damage_relations.double_damage_to[j].name===defense[i]){
+                        damage +=2;
+                        continue loop1;            
+                    }
+                }
+                for(let j = 0;j<response.damage_relations.half_damage_to.length;j++){
+                    if(response.damage_relations.half_damage_to[j].name ===defense[i]){
+                        damage +=0.5
+                        continue loop1;
+                    }
+                }
+                for(let j = 0; response.damage_relations.no_damage_to.length;j++){
+                    if(response.damage_relations.no_damage_to[j].name ===defense[i]){
+                        continue loop1;                       
+                    }
+                }
+                damage+=1;
+            }
+            //for(i=0; i< defense.length-1;i++){            
+            // if ((response.damage_relations.double_damage_to.find(
+            //     function (ele) {console.log(ele); return ele.name === defense[0]; })).name === defense[0])
+            // { damage += 2; }
+            // else if ((response.damage_relations.half_damage_to.find(
+            //     function (ele) { return ele.name === defense[0]; })).name === defense[0])
+            // { damage += 0.5; }
+            // else if ((response.damage_relations.no_damage_to.find(
+            //     function (ele) { return ele.name === defense[0]; })).name === defense[0])
+            // { damage += 0; }
+            // else { damage += 1 }
+
+            // }
+            console.log(damage);
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="attackType" placeholder="enter attack move's type e.g. fire/ice">
+        <input type="text" id="pokemonRecevingDamage" placeholder="typeOfPokemon being hit e.g. ice/grass">
+        <input type="button" onclick="result()" value="test the damage">
+    </form>
+</body>
+
+</html>
