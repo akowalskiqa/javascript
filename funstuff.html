@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+</head>
+<body>
+    <div id="appendHere"></div>
+</body>
+
+<script>
+    var rows = 25,spaces=24,star = 1;
+    for(var i =0; i<rows; i++){
+        let line = "-".repeat(spaces);
+        line += "*".repeat(star);
+        line += "-".repeat(spaces);
+        spaces -=1;
+        star +=2;
+        insertThis(line);
+    }
+    function insertThis(line){
+    var para = document.createElement("p");
+    var node = document.createTextNode(line);
+    para.appendChild(node);
+    document.getElementById("appendHere").appendChild(para);
+    }
+</script>
+</html>
